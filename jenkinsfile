@@ -31,5 +31,11 @@ pipeline {
                 bat "docker run -p 8091:8091 -d --name gateway-sr --network docker-network gateway-image"
             }
         }
+        stage('Cleaning') {
+                    steps {
+                        echo 'Removing the container'
+                        bat "docker rm -f gateway-sr"
+                    }
+                }
     }
 }
